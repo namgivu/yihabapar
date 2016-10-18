@@ -20,7 +20,7 @@ mv $t/yihabapar-master/* $UTIL_HOME ; rm -rf $t ;
 #region set up path on destination site
 
   #remove non-util assets
-  pushd `pwd` ; cd $UTIL_HOME ; rm -rf README.md LICENSE .gitirnore ; popd
+  pushd `pwd` ; cd $UTIL_HOME ; rm -rf README.md LICENSE .gitirnore let-me-in.sh ; popd
 
   #create util_config from template and clean up template
   t="$UTIL_HOME/util_config.template.py"
