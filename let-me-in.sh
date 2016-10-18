@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#ref. http://unix.stackexchange.com/a/2691/17671
 
 UTIL_HOME="/path/to/UTIL_HOME"
 UTIL_HOME="/home/namgivu/NN/code/django-start/util"
