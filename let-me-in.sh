@@ -32,8 +32,8 @@ mv $t/yihabapar-master/* $UTIL_HOME ; rm -rf $t ;
   APP_NAME=`basename $APP_HOME`
 
   #fill in util_config ref. http://stackoverflow.com/a/525612/248616
-  s="path/to/app/home" ; sed -i-e "s#$s#$APP_HOME#g" $c
-  s="YOUR-APP-NAME"    ; sed -i-e "s#$s#$APP_NAME#g" $c
+  s="path/to/app/home" ; sed -i -e "s#$s#$APP_HOME#g" $c
+  s="YOUR-APP-NAME"    ; sed -i -e "s#$s#$APP_NAME#g" $c
 
 #endregion set up path on destination site
 
