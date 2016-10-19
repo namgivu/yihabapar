@@ -13,7 +13,7 @@ if True:
 if not os.path.exists(UTIL_CONFIG):
   run_bash('cp -f {UTIL_CONFIG_TEMPLATE} {UTIL_CONFIG}'.format(UTIL_CONFIG=UTIL_CONFIG,
                                                                UTIL_CONFIG_TEMPLATE=UTIL_CONFIG_TEMPLATE))
-import util_config
+from util_config import util_config
 #endregion load util config
 
 
