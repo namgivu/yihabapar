@@ -24,6 +24,8 @@ from get_arg import get_arg
 
 sys.path.insert(0, VAULT_HOME)
 from git_clone import git_clone
+from ext_clone import ext_clone
+from ext_remove import ext_remove
 #endregion common helpers
 
 
