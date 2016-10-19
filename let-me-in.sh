@@ -3,6 +3,11 @@
 
 UTIL_HOME="/path/to/UTIL_HOME"
 
+#take 1st arg as UTIL_HOME if exists
+if [ ! -z $1 ]; then
+  UTIL_HOME=$1
+fi
+
 u="https://github.com/namgivu/yihabapar/archive/master.zip" ;
 t="/tmp/namgivu.yihabapar" ;
 o="$t/master.zip" ;
