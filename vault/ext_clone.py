@@ -1,43 +1,37 @@
 #!/usr/bin/python
-from init import *
+'''
+Clone an external git repository to sub folder inside another git repo
+'''
 
+def ext_clone(gitRepo, CLONED_TO):
+  #region init util
+  import sys, os
+  UTIL_HOME='{SCRIPT_HOME}/..'.format(SCRIPT_HOME=os.path.abspath(os.path.dirname(__file__)) )
+  sys.path.insert(0, UTIL_HOME)
+  from util_init import *
+  #endregion init util
 
-#region params
-sshkeyNN='/home/ubuntu/.ssh/namgivu-github-ssh'
+  #region cloning
+  GIT_SSH_COMMAND='GIT_SSH_COMMAND="ssh -i {key}"'.format(key=gitRepo['key'])
+  shGitSubModule='git -C {APP_HOME} submodule add {repoUrl} {CLONED_TO}'.format(
+    APP_HOME=APP_HOME,
+    repoUrl=gitRepo['url'],
+    CLONED_TO=CLONED_TO
+  )
+  sh='{GIT_SSH_COMMAND} ; {shGitSubModule}'.format(GIT_SSH_COMMAND=GIT_SSH_COMMAND, shGitSubModule=shGitSubModule)
+  run_bash(sh)
+  #endregion cloning
 
-gitRepos={
-  #repo for hoangphuong demo for Maya 30-days Hackathon
-  'hoangphuong': {'githubKey': sshkeyNN,
-                    'repoUrl':'git@github.com:hoangphuong/personal_robot_abilities.git',
-                     'branch':'master',
-                 },
-}
-
-#parse active git repo as 1st cmd's arg
-activeGitRepo = get_arg('-activeGitRepo', default=gitRepos.keys()[0])
-
-gitRepo=gitRepos[activeGitRepo]
-githubKey=gitRepo['githubKey']
-repoUrl=gitRepo['repoUrl']
-
-GIT_SSH_COMMAND='GIT_SSH_COMMAND="ssh -i ''%s''"' % githubKey
-
-CLONED_TO='ext/{activeGitRepo}'.format(activeGitRepo=activeGitRepo)
-#endregion params
-
-
-#region cloning
-shGitSubModule='git -C {APP_HOME} submodule add {repoUrl} {CLONED_TO}'.format(APP_HOME=APP_HOME, repoUrl=repoUrl, CLONED_TO=CLONED_TO)
-sh='{GIT_SSH_COMMAND} ; ' \
-   '{shGitSubModule}'.format(GIT_SSH_COMMAND=GIT_SSH_COMMAND, shGitSubModule=shGitSubModule)
-
-if __name__ == "__main__": # stuff only to run when not called via 'import' here ref. http://stackoverflow.com/a/6523852/248616
+if __name__ == "__main__": # when this file executed ref. http://stackoverflow.com/a/6523852/248616
   print 'Cloning external repo...'
   print
 
-  run_bash(sh)
-
+  args=['url', 'branch', 'key', 'CLONED_TO']
+  ext_clone(gitRepo={'url'   : get_arg('url', args),
+                     'branch': get_arg('branch', args),
+                     'key'   : get_arg('key', args),
+                     },
+            CLONED_TO=get_arg('CLONED_TO', args),
+            )
   print
-  print sh
   print 'Cloning external repo... DONE'
-#endregion cloning
