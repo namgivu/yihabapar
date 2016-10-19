@@ -19,7 +19,7 @@ rm -rf $t ; mkdir -p $t ;
 wget $u -O $o ; unzip $o -d $t ;
 
 #copy to destination & clean up temp
-mv $t/yihabapar-master/* $UTIL_HOME ; rm -rf $t ;
+rsync -chazvP $t/yihabapar-master/* $UTIL_HOME ; rm -rf $t ;
 
 
 #region set up path on destination site
