@@ -21,6 +21,9 @@ from util_config import util_config
 sys.path.insert(0, COMMON_UTIL)
 from run_bash import run_bash
 from get_arg import get_arg
+
+sys.path.insert(0, VAULT_HOME)
+from git_clone import git_clone
 #endregion common helpers
 
 
