@@ -1,11 +1,11 @@
 import os, sys
 
 #region path
-SCRIPT_HOME=os.path.abspath(os.path.dirname(__file__))
-COMMON_UTIL=os.path.abspath("%s/common" % SCRIPT_HOME)
-UTIL_HOME  =os.path.abspath("%s/vault" % SCRIPT_HOME)
-UTIL_CONFIG=os.path.abspath('%s/util_config.py' % SCRIPT_HOME)
-UTIL_CONFIG_TEMPLATE=os.path.abspath('%s/util_config.template.py' % SCRIPT_HOME)
+UTIL_HOME  =os.path.abspath(os.path.dirname(__file__))
+COMMON_UTIL=os.path.abspath("%s/common" % UTIL_HOME)
+VAULT_HOME =os.path.abspath("%s/vault" % UTIL_HOME)
+UTIL_CONFIG=os.path.abspath('%s/util_config.py' % UTIL_HOME)
+UTIL_CONFIG_TEMPLATE=os.path.abspath('%s/util_config.template.py' % UTIL_HOME)
 #endregion path
 
 
