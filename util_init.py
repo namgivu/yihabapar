@@ -26,6 +26,7 @@ sys.path.insert(0, VAULT_HOME)
 from git_clone import git_clone
 from ext_clone import ext_clone
 from ext_remove import ext_remove
+from download_from_s3 import download_from_s3
 #endregion common helpers
 
 
